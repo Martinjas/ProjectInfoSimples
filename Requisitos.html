@@ -42,20 +42,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Martin Andrade Jastrzebski</a>
+          <a class="navbar-brand" href="home.html">Martin Andrade Jastrzebski</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#resumo">Resumo</a></li>
-            <li><a href="#vagas">Vagas por Período</a></li>
-<li><a href="#Busca">Busca</a></li>
+            <li><a href="home.html">Resumo</a></li>
+            <li><a href="Vagas por Período.html">Vagas por Período</a></li>
+<li><a href="Busca.html">Busca</a></li>
 
-            <li class="active"><a href="#requisitos">Requisitos</a>
+            <li class="active"><a href="Requisitos.html">Requisitos</a>
 
 
 </li>
 <li>
-  <a href="#descricao">Descrição</a>
+  <a href="Descrição.html">Descrição</a>
 </li>
 
             
@@ -71,28 +71,51 @@
       <div class="jumbotron">
         <h1>Palavras-Chave</h1>
         <p>Word-Cloud</p>
-		<!-- Aqui vai TUDO que vai entrar na página-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script>
-		var node = document.getElementById('node-id');
-		node.innerHTML="<p>Analise de dados extraidos do portal de estágios do PCS.</p>";
-		jQuery.getJSON("data.json",function(vagas){
-			vagas.forEach(function(entry) {
-    	//
-    		numerodeVagas+=parseInt(entry.NumerodeVagas);
-    		node.innerHTML+="<p>"+entry.Area+"</p>";
-
-			});
-		});
-		</script>
-		
 		
 		<p style="font-size:15px; font-family:Arial">Termos desconsiderados:.......</p>
-		
-		
-		
-		
-		
+		<!-- Aqui vai TUDO que vai entrar na página-->
+		<p id='nuvem'></p>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>
+			var a=0
+			var palavras;
+			var contador=[];
+			var node = document.getElementById('nuvem');
+			node.innerHTML="<p>Areas de Atuação atualmente abrangidas</p> ";
+			var bandeira =0;
+			
+			jQuery.getJSON("data.json",function(vagas){
+			
+				vagas.forEach(function(entry) {
+					palavras=entry.Requisitos.split(' ');
+					contador[a]=new array(palavras.length);
+					palavras.forEach(function(p,index,k){
+						contador[a][index]=0;
+							
+						
+						
+						palavras.forEach(function(P,index,t){
+							if(p==P||p==P+'s')contador[a][index]=contador[a][index]+1;
+							
+						});
+						
+					});
+					
+				a++;
+				});
+				for(a=0;a<100;a++){
+				node.innerHTML="<p>"+contador[a]+"</p> ";
+				}
+			});
+				
+
+						
+			
+
+    
+
+		</script>
+  
 		
 		
       </div>
@@ -110,9 +133,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-   
+  
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
-  
+
 
 </body></html>

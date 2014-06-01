@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Theme Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+	<script src="js/highcharts.js"></script>
+	<script src="js/modules/exporting.js"></script>
+	
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'World\'s largest cities per 2014'
+            },
+            subtitle: {
+                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Population (millions)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [
+                    ['Shanghai', 23.7],
+                    ['Lagos', 16,1],
+                    ['Instanbul', 14.2],
+                    ['Karachi', 14.0],
+                    ['Mumbai', 12.5],
+                    ['Moscow', 12.1],
+                    ['São Paulo', 11.8],
+                    ['Beijing', 11.7],
+                    ['Guangzhou', 11.1],
+                    ['Delhi', 11.1],
+                    ['Shenzhen', 10.5],
+                    ['Seoul', 10.4],
+                    ['Jakarta', 10.0],
+                    ['Kinshasa', 9.3],
+                    ['Tianjin', 9.3],
+                    ['Tokyo', 9.0],
+                    ['Cairo', 8.9],
+                    ['Dhaka', 8.9],
+                    ['Mexico City', 8.9],
+                    ['Lima', 8.9]
+                ],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+    
+
+		</script>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="
+    height: 50px;
+    width: 1018px;
+    border-radius:10px;
+">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="home.html">Martin Andrade Jastrzebski</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="home.html">Resumo</a></li>
+            <li class="active"><a href="#vagas">Vagas por Período</a></li>
+<li><a href="Busca.html">Busca</a></li>
+
+            <li><a href="Requisitos.html">Requisitos</a>
+
+
+</li>
+<li>
+  <a href="Descrição.html">Descrição</a>
+</li>
+
+            
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Distribuição de Vagas por data de publicação.</h1>
+        <p>Data Inicial: DD/MM/YYYY</p>
+		<p>Data final: DD/MM/YYYY</p>
+
+		<div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+		
+		
+      
+      <div class="page-header">
+        <h1>About</h1>
+      </div>
+      <div class="well">
+        <p>Projeto Final de Práticas de Desenvolvimento de Software.</p>
+      </div>
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+   
+   <script>
+    var numerodeVagas=0;
+    var node = document.getElementById('node-id');
+    node.innerHTML="<p>Areas de Atuação atualmente abrangidas</p>";
+
+    jQuery.getJSON("data.json",function(vagas){
+      vagas.forEach(function(entry) {
+      //
+        numerodeVagas+=parseInt(entry.NumerodeVagas);
+        //node.innerHTML+="<p>"+entry.Area+"</p>";
+
+      });
+      
+    });
+
+
+    </script>
+ 
+  
+  
+
+</body>
+
+</html>
